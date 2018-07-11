@@ -18,8 +18,8 @@ class ComponenteCustoProducaoRotas {
   }
 
   private middlewares(): void {
-    this.router.use(this.middlewareAuth.checkAuth);
-    this.router.use(this.middlewareAuth.checkAcl);
+    // this.router.use(this.middlewareAuth.checkAuth);
+    // this.router.use(this.middlewareAuth.checkAcl);
   }
 
   private initRoutes(): void {
