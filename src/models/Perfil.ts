@@ -19,13 +19,13 @@ import {
 export class Perfil extends Model<Perfil> {
 
   @PrimaryKey
-  @Column
+  @Column(DataType.STRING)
   public id: string;
 
   @AllowNull(false)
   @Column(DataType.STRING) public nome: string;
 
-  @HasOne(() => Usuario)
-  public usuario: Usuario;
+  // @HasOne(() => Usuario)
+  // public usuario: Usuario;
 
 }

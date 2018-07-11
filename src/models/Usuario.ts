@@ -20,17 +20,18 @@ import { Pessoa } from "./Pessoa";
 @Table({
   timestamps: true,
 })
+
 export class Usuario extends Model<Usuario> {
   @PrimaryKey
-  @Column
+  @Column(DataType.STRING)
   public id: string;
 
-  @ForeignKey(() => Perfil)
-  @Column
-  public PerfilId: string;
+  // @ForeignKey(() => Perfil)
+  // @Column(DataType.STRING)
+  // public PerfilId: string;
 
   @ForeignKey(() => Pessoa)
-  @Column
+  @Column(DataType.STRING)
   public PessoaId: string;
 
   @AllowNull(false)
@@ -53,7 +54,7 @@ export class Usuario extends Model<Usuario> {
   @BelongsTo(() => Pessoa)
   public pessoa: Pessoa;
 
-  @BelongsTo(() => Perfil)
-  public perfil: Perfil;
+  // @BelongsTo(() => Perfil)
+  // public perfil: Perfil;
 
 }

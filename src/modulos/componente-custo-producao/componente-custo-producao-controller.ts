@@ -13,6 +13,8 @@ export class ComponenteCustoProducaoController {
   constructor() {}
 
   public async getAll(request: Request, response: Response, next: NextFunction) {
+
+    console.log("teste");
     const componenteCustoProducao: any[] = await ComponenteCustoProducao.findAll({
       include: [{
         include: [{
@@ -38,6 +40,7 @@ export class ComponenteCustoProducaoController {
 
   public getOne(request: Request, response: Response, next: NextFunction): void {
     const _id = request.params._id;
+    console.log("teste");
     ComponenteCustoProducao.findOne<ComponenteCustoProducao>({
       include: [{
         model: ComponenteCusto,
@@ -63,6 +66,7 @@ export class ComponenteCustoProducaoController {
       where: {id: _id},
     })
     .then((componenteCustoProducao) => {
+      console.log("testando");
       response.json(componenteCustoProducao);
     })
     .catch((err) => {

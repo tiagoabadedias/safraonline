@@ -19,7 +19,7 @@ import {
 })
 export class Especificacao extends Model<Especificacao> {
   @PrimaryKey
-  @Column
+  @Column(DataType.STRING)
   public id: string;
 
   @AllowNull(false)

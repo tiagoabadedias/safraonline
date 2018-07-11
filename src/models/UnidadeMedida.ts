@@ -19,7 +19,7 @@ import {
 })
 export class UnidadeMedida extends Model<UnidadeMedida> {
   @PrimaryKey
-  @Column
+  @Column(DataType.STRING)
   public id: string;
 
   @AllowNull(false)

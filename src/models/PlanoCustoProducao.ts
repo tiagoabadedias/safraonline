@@ -24,19 +24,19 @@ import { Produtor } from "./Produtor";
 })
 export class PlanoCustoProducao extends Model<PlanoCustoProducao> {
   @PrimaryKey
-  @Column
+  @Column(DataType.STRING)
   public id: string;
 
   @ForeignKey(() => SistemaCultivo)
-  @Column
+  @Column(DataType.STRING)
   public SistemaCultivoId: string;
 
   @ForeignKey(() => Produtor)
-  @Column
+  @Column(DataType.STRING)
   public ProdutorId: string;
 
   @ForeignKey(() => Cultura)
-  @Column
+  @Column(DataType.STRING)
   public CulturaId: string;
 
   @Column(DataType.STRING) public modelo: string;

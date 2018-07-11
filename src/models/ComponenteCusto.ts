@@ -15,21 +15,20 @@ import {
 import { UnidadeMedida } from "./UnidadeMedida";
 import { Especificacao } from "./Especificacao";
 
-
 @Table({
   timestamps: true,
 })
 export class ComponenteCusto extends Model<ComponenteCusto> {
   @PrimaryKey
-  @Column
+  @Column(DataType.STRING)
   public id: string;
 
   @ForeignKey(() => UnidadeMedida)
-  @Column
+  @Column(DataType.STRING)
   public UnidadeMedidaId: string;
 
   @ForeignKey(() => Especificacao)
-  @Column
+  @Column(DataType.STRING)
   public EspecificacaoId: string;
 
   @Column(DataType.STRING) public nivel: string;

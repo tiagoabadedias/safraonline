@@ -21,7 +21,7 @@ import { Especificacao } from "./Especificacao";
 })
 export class Cultura extends Model<Cultura> {
   @PrimaryKey
-  @Column
+  @Column(DataType.STRING)
   public id: string;
 
   @AllowNull(false)

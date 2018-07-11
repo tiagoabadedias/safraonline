@@ -22,7 +22,7 @@ import { Especificacao } from "./Especificacao";
 export class SistemaCultivo extends Model<SistemaCultivo> {
   
   @PrimaryKey
-  @Column
+  @Column(DataType.STRING)
   public id: string;
 
   @AllowNull(false)

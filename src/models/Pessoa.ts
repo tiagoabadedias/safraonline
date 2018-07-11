@@ -20,7 +20,7 @@ import { Usuario } from "./Usuario";
 })
 export class Pessoa extends Model<Pessoa> {
   @PrimaryKey
-  @Column
+  @Column(DataType.STRING)
   public id: string;
 
   @AllowNull(false)

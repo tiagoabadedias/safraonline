@@ -22,11 +22,11 @@ import { Pessoa } from "./Pessoa";
 export class Produtor extends Model<Produtor> {
   
   @PrimaryKey
-  @Column
+  @Column(DataType.STRING)
   public id: string;
 
   @ForeignKey(() => Pessoa)
-  @Column
+  @Column(DataType.STRING)
   public PessoaId: string;
 
   @BelongsTo(() => Pessoa)

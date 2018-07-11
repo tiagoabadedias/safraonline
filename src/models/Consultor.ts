@@ -22,11 +22,11 @@ import { Usuario } from "./Usuario";
 export class Consultor extends Model<Consultor> {
 
   @PrimaryKey
-  @Column
+  @Column(DataType.STRING)
   public id: string;
 
   @ForeignKey(() => Pessoa)
-  @Column
+  @Column(DataType.STRING)
   public PessoaId: string;
 
   @BelongsTo(() => Pessoa)

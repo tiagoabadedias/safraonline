@@ -1,10 +1,10 @@
 {
-  "name": "back",
+  "name": "safraonline",
   "version": "0.0.1",
   "engines": {
     "node": "8.6.0"
   },
-  "description": "blank",
+  "description": "safraonline",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "cross-env TZ=America/Sao_Paulo && cross-env NODE_ENV=production && ts-node src/server.ts",
@@ -86,8 +86,8 @@
     "reflect-metadata": "^0.1.10",
     "requestify": "^0.2.5",
     "rxjs": "^5.4.2",
-    "sequelize": "^4.31.2",
-    "sequelize-typescript": "^0.6.2",
+    "sequelize": "^4.13.5",
+    "sequelize-typescript": "^0.5.0",
     "socket.io": "^1.7.0",
     "socket.io-client": "^1.7.0",
     "socketio-jwt-auth": "0.0.6",
@@ -103,7 +103,7 @@
   "devDependencies": {
     "eslint": "^4.15.0",
     "nodemon": "^1.12.1",
-    "sequelize-cli": "^3.0.0",
+    "sequelize-cli": "^3.2.0",
     "tslint": "^5.7.0"
   }
 }

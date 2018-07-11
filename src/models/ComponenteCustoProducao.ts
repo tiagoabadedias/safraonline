@@ -24,27 +24,27 @@ import { ComponenteCusto } from "./ComponenteCusto";
 export class ComponenteCustoProducao extends Model<ComponenteCustoProducao> {
   
   @PrimaryKey
-  @Column
+  @Column(DataType.STRING)
   public id: string;
 
   @ForeignKey(() => ComponenteCustoProducao)
-  @Column
+  @Column(DataType.STRING)
   public ComponenteCustoProducaoPaiId: string;
 
   @ForeignKey(() => PlanoCustoProducao)
-  @Column
+  @Column(DataType.STRING)
   public PlanoCustoProducaoId: string;
 
   @ForeignKey(() => ComponenteCusto)
-  @Column
+  @Column(DataType.STRING)
   public ComponenteCustoId: string;
 
   @ForeignKey(() => Especificacao)
-  @Column
+  @Column(DataType.STRING)
   public EspecificacaoId: string;
 
   @ForeignKey(() => UnidadeMedida)
-  @Column
+  @Column(DataType.STRING)
   public UnidadeMedidaId: string;
 
   @Column(DataType.STRING) public nivel: string;
@@ -61,6 +61,9 @@ export class ComponenteCustoProducao extends Model<ComponenteCustoProducao> {
 
   @HasMany(() => ComponenteCustoProducao)
   public componenteCustoProducaoFilhos: ComponenteCustoProducao;
+
+  // @BelongsTo(() => ComponenteCustoProducao)
+  // public componenteCustoProducaoPai: ComponenteCustoProducao;
 
   @BelongsTo(() => PlanoCustoProducao)
   public planoCustoProducao: PlanoCustoProducao;

@@ -15,7 +15,6 @@ export class HelperAuth {
     const roles: Permissao[] = user.perfil ? user.perfil.permissoes : [];
 
     const token = jwt.encode({
-      BolsaId: user.get({ plain: true }).BolsaId,
       exp: expires,
       id: user.id,
       roles,
@@ -31,7 +30,6 @@ export class HelperAuth {
   public generateShortToken = (user: any): string => {
     const expires = moment().add(30, "minutes").valueOf();
     const token = jwt.encode({
-      BolsaId: user.BolsaId,
       email: user.pessoa.email,
       exp: expires,
       id: user.id,
