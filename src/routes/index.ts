@@ -4,6 +4,8 @@ import { AutenticarController } from "../modulos/auth/auth-controller";
 import componenteCustoProducaoRotas from "./../modulos/componente-custo-producao/componente-custo-producao-rotas";
 import perfilRotas from "./../modulos/perfil/perfil-rotas";
 import usuarioRotas from "./../modulos/usuario/usuario-rotas";
+import uniadeMedidaRotas from "./../modulos/unidade-medida/unidade-medida-rotas";
+
 
 class Routes {
   public express: express.Application;
@@ -27,6 +29,7 @@ class Routes {
     this.router.use("/usuario", usuarioRotas);
     this.router.use("/perfil", perfilRotas);
     this.router.use("/componente-custo-producao", componenteCustoProducaoRotas);
+    this.router.use("/unidade-medida", uniadeMedidaRotas)
   }
 }
 
