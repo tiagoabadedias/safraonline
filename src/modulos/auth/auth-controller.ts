@@ -26,7 +26,7 @@ export class AutenticarController {
   public token(request: Request, response: Response, next: NextFunction): void {
     const usuario = request.body.usuario;
     const senha = request.body.senha;
-    console.log(senha);
+    console.log("-----------------", usuario)
 
     if (!usuario || !senha) {
       const err: IError = { message: "Faltando usuário ou senha", status: HttpStatus.BAD_REQUEST };

@@ -26,9 +26,9 @@ export class Usuario extends Model<Usuario> {
   @Column(DataType.STRING)
   public id: string;
 
-  // @ForeignKey(() => Perfil)
-  // @Column(DataType.STRING)
-  // public PerfilId: string;
+  @ForeignKey(() => Perfil)
+  @Column(DataType.STRING)
+  public PerfilId: string;
 
   @ForeignKey(() => Pessoa)
   @Column(DataType.STRING)
@@ -54,7 +54,7 @@ export class Usuario extends Model<Usuario> {
   @BelongsTo(() => Pessoa)
   public pessoa: Pessoa;
 
-  // @BelongsTo(() => Perfil)
-  // public perfil: Perfil;
+  @BelongsTo(() => Perfil)
+  public perfil: Perfil;
 
 }
