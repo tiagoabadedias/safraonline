@@ -5,6 +5,7 @@ import componenteCustoProducaoRotas from "./../modulos/componente-custo-producao
 import perfilRotas from "./../modulos/perfil/perfil-rotas";
 import usuarioRotas from "./../modulos/usuario/usuario-rotas";
 import uniadeMedidaRotas from "./../modulos/unidade-medida/unidade-medida-rotas";
+import produtorRotas from "./../modulos/produtor/produtor-rotas"
 
 
 class Routes {
@@ -30,6 +31,7 @@ class Routes {
     this.router.use("/perfil", perfilRotas);
     this.router.use("/componente-custo-producao", componenteCustoProducaoRotas);
     this.router.use("/unidade-medida", uniadeMedidaRotas)
+    this.router.use("/produtor", produtorRotas)
   }
 }
 
