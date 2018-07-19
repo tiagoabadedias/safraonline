@@ -34,11 +34,11 @@ export class ProdutorController {
   public create(request: Request, response: Response, next: NextFunction): void {
     sequelize.transaction(async (t: Transaction) => {
       const pessoa = Pessoa.build<Pessoa>({
-        dataNascimento: request.body.dataNascimento,
-        email: request.body.email,
+        dataNascimento: request.body.pessoa.dataNascimento,
+        email: request.body.pessoa.email,
         id: Uuid(),
-        nome: request.body.nome,   
-        telefone: request.body.telefone,
+        nome: request.body.pessoa.nome,   
+        telefone: request.body.pessoa.telefone,
       })
       
       const produtor = Produtor.build<Produtor>({
