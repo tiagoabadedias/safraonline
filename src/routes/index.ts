@@ -10,7 +10,6 @@ import consultorRotas from "./../modulos/consultor/consultor-rotas"
 import culturaRotas from "./../modulos/cultura/cultura-rotas"
 import sistemaCultivoRotas from "../modulos/sistema-cultivo/sistema-cultivo-rotas";
 
-
 class Routes {
   public express: express.Application;
   public router: express.Router;
