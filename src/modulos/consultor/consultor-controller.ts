@@ -4,27 +4,27 @@ import { Transaction } from "sequelize";
 import * as Uuid from "uuid";
 import { ICustomRequest } from "../../interfaces/custom-request";
 import { sequelize } from "../../sequelize";
-import { Produtor } from "../../models/Produtor";
 import { Pessoa } from "../../models/Pessoa";
+import { Consultor } from "../../models/Consultor";
 
-export class ProdutorController {
+export class ConsultorController {
   constructor() {}
 
   public async getAll(request: Request, response: Response, next: NextFunction) {
-    const produtor: any[] = await Produtor.findAll({
+    const consultor: any[] = await Consultor.findAll({
       include:[Pessoa]
     });
-    response.json(produtor);
+    response.json(consultor);
   }
 
   public getOne(request: Request, response: Response, next: NextFunction): void {
     const _id = request.params._id;
-    Produtor.findOne<Produtor>({
+    Consultor.findOne<Consultor>({
       include:[Pessoa],
       where: {id: _id},
     })
-    .then((produtor) => {
-      response.json(produtor);
+    .then((consultor) => {
+      response.json(consultor);
     })
     .catch((err) => {
       next(err);
@@ -41,7 +41,7 @@ export class ProdutorController {
         telefone: request.body.pessoa.telefone,
       })
       
-      const produtor = Produtor.build<Produtor>({
+      const consultor = Consultor.build<Consultor>({
         PessoaId: pessoa.id,
         id: Uuid(),
         pessoa
@@ -49,9 +49,9 @@ export class ProdutorController {
         include:[Pessoa]
       });
 
-      produtor.save()
-        .then((novoProdutor: any) => {
-          response.json(novoProdutor);
+      consultor.save()
+        .then((novoConsultor: any) => {
+          response.json(novoConsultor);
         })
         .catch((err) => {
           next(err);
@@ -64,12 +64,12 @@ export class ProdutorController {
       const _id = request.params._id;
 
 
-      const produtorParaAtualizar = await Produtor.findOne<Produtor>({
+      const consultorParaAtualizar = await Consultor.findOne<Consultor>({
         include:[Pessoa],
         where: { id: _id },
-      }) as Produtor;
+      }) as Consultor;
 
-      const pessoaParaAtualizar: Pessoa = produtorParaAtualizar.pessoa;
+      const pessoaParaAtualizar: Pessoa = consultorParaAtualizar.pessoa;
 
       if (request.body.pessoa.nome) { pessoaParaAtualizar.nome = request.body.pessoa.nome; }
       if (request.body.pessoa.telefone) { pessoaParaAtualizar.telefone = request.body.pessoa.telefone; }
@@ -78,9 +78,9 @@ export class ProdutorController {
 
       try {
         const pessoaAtualizada = await pessoaParaAtualizar.save({ transaction: t });
-        const produtorAtualizado = await produtorParaAtualizar.save({ transaction: t });
+        const consultorAtualizado = await consultorParaAtualizar.save({ transaction: t });
 
-        response.json(produtorAtualizado);
+        response.json(consultorAtualizado);
       } catch (err) {
         t.rollback();
         next(err);
@@ -89,11 +89,11 @@ export class ProdutorController {
   }
 
   public async delete(request: ICustomRequest, response: Response, next: NextFunction) {
-    Produtor.destroy({
+    Consultor.destroy({
       where: { id: request.params._id },
     })
-    .then((produtor) => {
-      response.json(produtor);
+    .then((consultor) => {
+      response.json(consultor);
     })
     .catch((err) => {
       next(err);

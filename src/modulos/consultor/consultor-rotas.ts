@@ -1,17 +1,17 @@
 import * as express from "express";
-import { PerfilController } from "../../modulos/perfil/perfil-controller";
 import { MiddlewareAuth } from "./../../middlewares/middleware-auth";
+import { ConsultorController } from "./consultor-controller";
 
-class PerfilRotas {
+class ConsultorRotas {
   public express: express.Application;
   public router: express.Router;
-  public perfilControler: PerfilController;
+  public consultorController: ConsultorController;
   public middlewareAuth: MiddlewareAuth;
 
   constructor() {
     this.express = express();
     this.router = express.Router();
-    this.perfilControler = new PerfilController();
+    this.consultorController = new ConsultorController();
     this.middlewareAuth = new MiddlewareAuth();
     this.middlewares();
     this.initRoutes();
@@ -23,10 +23,12 @@ class PerfilRotas {
   }
 
   private initRoutes(): void {
-    this.router.get("/", this.perfilControler.getAll);
-    this.router.put("/:_id", this.perfilControler.update);
-    this.router.delete("/:_id", this.perfilControler.delete);
+    this.router.get("/", this.consultorController.getAll);
+    this.router.get("/:_id", this.consultorController.getOne);
+    this.router.post("/", this.consultorController.create);
+    this.router.put("/:_id", this.consultorController.update);
+    this.router.delete("/:_id", this.consultorController.delete);
   }
 }
 
-export default new PerfilRotas().router;
+export default new ConsultorRotas().router;
