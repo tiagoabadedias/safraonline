@@ -7,6 +7,7 @@ import usuarioRotas from "./../modulos/usuario/usuario-rotas";
 import uniadeMedidaRotas from "./../modulos/unidade-medida/unidade-medida-rotas";
 import produtorRotas from "./../modulos/produtor/produtor-rotas"
 import consultorRotas from "./../modulos/consultor/consultor-rotas"
+import culturaRotas from "./../modulos/cultura/cultura-rotas"
 import sistemaCultivoRotas from "../modulos/sistema-cultivo/sistema-cultivo-rotas";
 
 
@@ -36,6 +37,7 @@ class Routes {
     this.router.use("/produtor", produtorRotas)
     this.router.use("/consultor", consultorRotas)
     this.router.use("/sistema-cultivo", sistemaCultivoRotas);
+    this.router.use("/cultura", culturaRotas);
   }
 }
 
