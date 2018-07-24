@@ -14,7 +14,6 @@ export class UsuarioController {
   public async getAll(request: Request, response: Response, next: NextFunction) {
     const usuarios: any[] = await Usuario.findAll({
         include: [{
-          attributes: ["id", "nome"],
           model: Pessoa,
         }, {
           attributes: ["id", "nome"],
@@ -29,7 +28,6 @@ export class UsuarioController {
     Usuario.findOne<Usuario>({
       attributes: ["id" , "usuario", "imagem", "PerfilId", "createdAt"],
       include: [{
-        attributes: ["id", "nome"],
         model: Pessoa,
       }, {
         attributes: ["id", "nome"],
@@ -58,8 +56,11 @@ export class UsuarioController {
     sequelize.transaction(async (t: Transaction) => {
       const pessoa = Pessoa.build<Pessoa>(
         {
+          dataNascimento: request.body.pessoa.dataNascimento,
+          email: request.body.pessoa.email,
           id: Uuid(),
-          nome: request.body.pessoa.nome,
+          nome: request.body.pessoa.nome,   
+          telefone: request.body.pessoa.telefone,
         },
       );
 
@@ -75,7 +76,7 @@ export class UsuarioController {
       },
     );
 
-      usuario.save()
+    usuario.save()
         .then((novoUsuario) => {
           response.json(novoUsuario);
         })
@@ -94,9 +95,12 @@ export class UsuarioController {
         where: { id: _id },
       }) as Usuario;
 
-      const PessoaParaAtualizar: Pessoa = usuarioParaAtualizar.pessoa;
+      const pessoaParaAtualizar: Pessoa = usuarioParaAtualizar.pessoa;
 
-      if (request.body.nome) { PessoaParaAtualizar.nome = request.body.pessoa.nome; }
+      if (request.body.pessoa.nome) { pessoaParaAtualizar.nome = request.body.pessoa.nome; }
+      if (request.body.pessoa.telefone) { pessoaParaAtualizar.telefone = request.body.pessoa.telefone; }
+      if (request.body.pessoa.email) { pessoaParaAtualizar.email = request.body.pessoa.email; }
+      if (request.body.pessoa.dataNascimento) { pessoaParaAtualizar.dataNascimento = request.body.pessoa.dataNascimento; }
 
       if (request.body.senha) { usuarioParaAtualizar.senha = bcrypt.hashSync(request.body.senha, 10); }
       if (request.body.usuario) { usuarioParaAtualizar.usuario = request.body.usuario; }
@@ -104,7 +108,7 @@ export class UsuarioController {
       if (request.body.PerfilId) { usuarioParaAtualizar.PerfilId = request.body.PerfilId; }
 
       try {
-        const pessoaAtualizada = await PessoaParaAtualizar.save({ transaction: t });
+        const pessoaAtualizada = await pessoaParaAtualizar.save({ transaction: t });
         const usuarioAtualizado = await usuarioParaAtualizar.save({ transaction: t });
 
         response.json(usuarioAtualizado);
