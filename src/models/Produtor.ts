@@ -29,7 +29,7 @@ export class Produtor extends Model<Produtor> {
   @Column(DataType.STRING)
   public PessoaId: string;
 
-  @BelongsTo(() => Pessoa)
+  @BelongsTo(() => Pessoa, {onDelete: "CASCADE"})
   public pessoa: Pessoa;
 
 }

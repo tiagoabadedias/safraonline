@@ -89,8 +89,12 @@ export class ProdutorController {
   }
 
   public async delete(request: ICustomRequest, response: Response, next: NextFunction) {
-    Produtor.destroy({
+    const produtor = await Produtor.findOne({
+      include:[Pessoa],
       where: { id: request.params._id },
+    }) as Produtor
+
+    produtor.pessoa.destroy({
     })
     .then((produtor) => {
       response.json(produtor);
